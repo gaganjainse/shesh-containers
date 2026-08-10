@@ -6,7 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from shesha_containers.runner import (  # noqa: E402
+from shesh_containers.runner import (  # noqa: E402
     ContainerConfig, list_images, pull, run_in_container,
 )
 
@@ -53,6 +53,6 @@ def test_pull():
 
 
 def test_mcp_tools_exist():
-    import shesha_containers.server as srv  # noqa: F401
+    import shesh_containers.server as srv  # noqa: F401
     for name in ("run_sandboxed", "list_container_images", "pull_image", "set_engine"):
         assert hasattr(srv, name)
