@@ -7,7 +7,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from shesh_containers.runner import (  # noqa: E402
-    ContainerConfig, list_images, pull, run_in_container,
+    ContainerConfig,
+    list_images,
+    pull,
+    run_in_container,
 )
 
 
