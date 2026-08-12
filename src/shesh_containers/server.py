@@ -1,12 +1,7 @@
 """MCP server for podman/distrobox sandboxed execution."""
 from __future__ import annotations
 
-from fastmcp import FastMCP
-
-try:
-    from shesh_audit.mcp_guard import GuardedMCP as _MCP
-except ImportError:
-    _MCP = FastMCP
+from shesh_audit.mcp_guard import GuardedMCP as _MCP
 
 from .runner import (
     ContainerConfig,
