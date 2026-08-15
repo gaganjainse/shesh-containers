@@ -1,29 +1,35 @@
->  **Consolidated into [shesh-core](https://github.com/gaganjainse/shesh-core)** — this module now lives in the shesh-core monorepo (same package name, same console script). Archived 2026-08-13.
-
 # shesh-containers
 
-Run commands inside **unprivileged, network-isolated podman/distrobox
-containers** instead of on the host, exposed as MCP tools. Containers are
-disposable (`--rm`) with `--cap-drop=ALL` and PID limits.
+> **Superseded by [shesh-core](https://github.com/gaganjainse/shesh-core).**
+> This repository is a tombstone: its history is preserved, its source is not.
 
-- License: GPL-3.0
-- Layer: Soma
-- Part of: [Shesh ecosystem](https://github.com/gaganjainse/shesh-ecosystem)
+## What happened
 
-## MCP tools
+[ADR-0019](https://github.com/gaganjainse/shesh-docs/blob/main/src/governance/adr/0019-shesh-core-monorepo.md)
+consolidated the single-module services into one repository. A module of a few
+hundred lines is not a service: each one carried its own build configuration,
+pipeline, and security policy, and those drifted apart from each other.
 
-- `run_sandboxed(command, image, network)` — ephemeral container execution
-- `list_container_images()`, `pull_image(image)`, `set_engine(engine)`
+The code now lives in `shesh-core` as the `shesh_containers` package, with
+the same import path and the same console script.
 
-## Develop
+## Why the source was removed
+
+Two copies of the same module drift. Keeping the code here meant a reader could
+find it, edit it, and have the change silently ignored by everything that
+actually runs.
+
+The history remains in this repository's git log. Nothing was lost.
+
+## Installing
 
 ```bash
-uv run pytest -q
-uv run ruff check .
-uv run shesh-containers-mcp
+pipx install git+https://github.com/gaganjainse/shesh-core.git
 ```
 
-## Security
+Console script names are unchanged, so existing client configuration keeps
+working.
 
-Security posture and vulnerability reporting: [canonical ecosystem security
-policy](https://github.com/gaganjainse/shesh-ecosystem/blob/main/SECURITY.md).
+## Licence
+
+GPL-3.0-or-later.
